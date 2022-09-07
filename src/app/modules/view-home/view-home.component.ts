@@ -13,6 +13,7 @@ export class ViewHomeComponent implements OnInit {
     last_name: [null, Validators.required],
     email: [null, [Validators.required, Validators.email]],
     phone: [null, Validators.required],
+    remarks: [null],
     addresses: this.fb.array([
       this.getNewFormAddress()
     ])
@@ -74,6 +75,10 @@ export class ViewHomeComponent implements OnInit {
 
   addAddress() {
     this.addresses.push(this.getNewFormAddress());
+  }
+
+  removeAddress(index: number) {
+    this.addresses.removeAt(index);
   }
 
   getNewFormAddress() {
