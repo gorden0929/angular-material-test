@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-view-home',
@@ -8,16 +8,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ViewHomeComponent implements OnInit {
 
-  // sidenav controller
-  opened = false;
-
-  formAddress = new FormGroup({
-    country: new FormControl(null, Validators.required),
-    state: new FormControl(null, Validators.required),
-    city: new FormControl(null, Validators.required),
-    line1: new FormControl(null, Validators.required),
-    line2: new FormControl(null, Validators.required),
-    postcode: new FormControl(null, Validators.required),
+  formGroup = this.fb.group({
+    first_name: [null, Validators.required],
+    last_name: [null, Validators.required],
+    email: [null, [Validators.required, Validators.email]],
+    phone: [null, Validators.required],
+    addresses: this.fb.array([
+      this.getNewFormAddress()
+    ])
   });
 
   countries = [
@@ -65,15 +63,33 @@ export class ViewHomeComponent implements OnInit {
   states: { value: string, key: string, cities?: { value: string, key: string }[] }[] = [];
   cities: { value: string, key: string }[] = [];
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  get addresses() { return this.formGroup.controls.addresses; }
+
+  addAddress() {
+    this.addresses.push(this.getNewFormAddress());
+  }
+
+  getNewFormAddress() {
+    return this.fb.group({
+      country: new FormControl(null, Validators.required),
+      state: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      line1: new FormControl(null, Validators.required),
+      line2: new FormControl(null, Validators.required),
+      postcode: new FormControl(null, Validators.required),
+    });
   }
 
   onCountryChange(value: string) {
     const countryObj = this.countries.find(c => c.value === value);
     this.states = countryObj?.states || [];
-
   }
 
   onStateChange(value: string) {
@@ -82,7 +98,7 @@ export class ViewHomeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formAddress.value);
+    console.log(this.formGroup.value);
   }
 
 

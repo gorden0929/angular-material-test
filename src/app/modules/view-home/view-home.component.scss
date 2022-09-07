@@ -1,6 +1,12 @@
-mat-sidenav {
-  width: 200px;
+:host {
+  height: 100%;
+
 }
+
+mat-form-field {
+  width: 100%;
+}
+
 
 .mat-nav-list a.active {
   background: rgba(63, 81, 181, .15);
