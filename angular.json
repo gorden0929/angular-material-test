@@ -102,6 +102,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://gorden0929.github.io/angular-material-test/",
+            "name": "Angular Material Test",
+            "email": "limguancheng@hotmail.com"
+          }
         }
       }
     }
