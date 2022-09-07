@@ -1,0 +1,72 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list role="navigation">
+      <a mat-list-item [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+
+    <form class="d-flex flex-column" [formGroup]="formAddress" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Adress line 1</mat-label>
+        <input matInput placeholder="No.1" formControlName="line1">
+        <mat-error>This field is require</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Adress line 2</mat-label>
+        <input matInput placeholder="Jalan abc" formControlName="line2">
+        <mat-error>This field is require</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" (valueChange)="onCountryChange($event)">
+          <mat-option *ngFor="let country of countries" [value]="country.value">
+            {{country.key}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Please choose a country</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <mat-select formControlName="state" (valueChange)="onStateChange($event)">
+          <mat-option *ngFor="let state of states" [value]="state.value">
+            {{state.key}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Please choose a state</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city">
+          <mat-option *ngFor="let city of cities" [value]="city.value">
+            {{city.key}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Please choose a city</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Postcode</mat-label>
+        <input matInput placeholder="123456" formControlName="postcode" type="number">
+        <mat-error>This field is require</mat-error>
+      </mat-form-field>
+      <!-- button -->
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-sidenav-content>
+</mat-sidenav-container>
