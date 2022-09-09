@@ -13,11 +13,13 @@ export class ViewHomeComponent implements OnInit {
     last_name: [null, Validators.required],
     email: [null, [Validators.required, Validators.email]],
     phone: [null, Validators.required],
-    remarks: [null],
+    remark: [null],
     addresses: this.fb.array([
       this.getNewFormAddress()
     ])
   });
+
+  isLoading = false;
 
   countries = [
     {
@@ -103,7 +105,10 @@ export class ViewHomeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 
 

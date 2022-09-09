@@ -1,0 +1,31 @@
+<div class="container px-0 h-100 align-items-center d-flex justify-content-center">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <mat-card style="min-width: 20rem">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <!-- login form -->
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" type="text" />
+            <mat-error *ngIf="formGroup.controls.username">
+              Username is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" />
+            <mat-error *ngIf="formGroup.controls.password.invalid">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" class="w-100" [disabled]="formGroup.invalid">
+          Login
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

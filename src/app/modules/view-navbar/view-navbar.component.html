@@ -1,22 +1,55 @@
 <div class="d-flex flex-column h-100">
   <mat-toolbar color="primary">
-    <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+    <mat-toolbar-row class="mat-elevation">
+      <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+      <div class="spacer"></div>
+      <button mat-icon-button aria-label="Example icon-button with menu icon">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="title">
+      <p class="mb-0 fw-normal">{{title}}</p>
+    </mat-toolbar-row>
   </mat-toolbar>
-
   <mat-sidenav-container class="flex-grow-1">
     <mat-sidenav #sidenav mode="side" opened>
       <mat-nav-list role="navigation">
         <a mat-list-item [routerLink]="['/home']" routerLinkActive="active">Home</a>
-        <a mat-list-item href="#">Link 2</a>
+        <a mat-list-item [routerLink]="['/login']">Login</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
+        <a mat-list-item href="#">Link 3</a>
         <a mat-list-item href="#">Link 3</a>
       </mat-nav-list>
     </mat-sidenav>

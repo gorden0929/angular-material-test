@@ -110,7 +110,14 @@
       </button>
     </div>
 
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+      <mat-icon *ngIf="isLoading">
+        <mat-spinner diameter="20">
+        </mat-spinner>
+      </mat-icon>
+      <span *ngIf="!isLoading">Submit</span>
+    </button>
     <button mat-button type="button" class="ms-2">Cancel</button>
   </form>
 </div>

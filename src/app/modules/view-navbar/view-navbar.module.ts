@@ -28,7 +28,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatToolbarModule,
     MatIconModule
-
   ]
 })
 export class ViewNavbarModule { }
